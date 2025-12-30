@@ -1,5 +1,6 @@
 import { google } from '@ai-sdk/google';
 import { generateObject } from 'ai';
+import { log } from 'console';
 import { z } from 'zod';
 
 // Output schema (what we expect the AI to return)
@@ -32,8 +33,8 @@ export async function POST(req: Request) {
   const { imageBase64, userContext } = parsed.data;
 
   // Read API key from environment. Prefer `GOOGLE_API_KEY`, fallback to `GENAI_API_KEY`.
-  const apiKey = process.env.GOOGLE_API_KEY ?? process.env.GENAI_API_KEY ?? process.env.GENERATIVE_AI_API_KEY;
-
+  const apiKey =  process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+ console.log("API KEY:", apiKey);
   if (!apiKey) {
     return new Response(
       JSON.stringify({ error: 'Missing Google API key. Set GOOGLE_API_KEY in .env.local' }),
@@ -45,7 +46,7 @@ export async function POST(req: Request) {
     const result = await generateObject({
       // pass provider-specific options so the SDK can authenticate
       model: google('gemini-2.5-flash'),
-      providerOptions: ({ apiKey } as any),
+     providerOptions: ({ apiKey } as any),
       schema,
       messages: [
         {

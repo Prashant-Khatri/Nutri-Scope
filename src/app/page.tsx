@@ -14,6 +14,7 @@ import {
 } from "@/components/dumbComponents";
 import { z } from "zod";
 import { Camera, Loader2, Sparkles, X } from "lucide-react";
+import ChatPage from "@/components/chatPage";
 
 // 1️⃣ Component registry
 const COMPONENT_MAP: Record<string, React.FC<any>> = {
@@ -160,6 +161,9 @@ export default function Home() {
                 Upload an image to begin
               </div>
             )}
+          </div>
+          <div>
+            <ChatPage/>
           </div>
         </div>
       </div>
