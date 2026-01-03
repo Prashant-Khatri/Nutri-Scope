@@ -233,7 +233,7 @@ export default function Home() {
           <Sparkles size={10} /> AI-Powered Nutritionist
         </div>
         <h1 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400">
-          AI Nutrient Analyzer
+          Nutri-Scope
         </h1>
       </header>
 
