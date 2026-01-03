@@ -6,11 +6,11 @@ type Props = {
   feedback?: string;
 };
 
-export const NutritionScore=({ 
+export const NutritionScore = ({ 
   score, 
   subtitle = "A quick heuristic of overall healthiness", 
   feedback 
-}: Props)=>{
+}: Props) => {
   
   const normalized = Math.max(0, Math.min(100, Math.round(score)));
   
@@ -19,32 +19,34 @@ export const NutritionScore=({
   const dotColor = normalized >= 75 ? 'text-emerald-500' : normalized >= 50 ? 'text-amber-500' : 'text-red-500';
 
   return (
-    <div className="relative bg-white rounded-2xl border border-gray-200 shadow-md p-4 mb-4">
+    <div className="relative bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-md p-4 mb-4 transition-colors duration-300">
       
       {/* Header Section */}
       <div className="flex items-center justify-between mb-3">
         <div>
-          <h4 className="text-sm font-semibold text-gray-900">Nutrition Score</h4>
-          <p className="text-xs text-gray-500">{subtitle}</p>
+          <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Nutrition Score</h4>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{subtitle}</p>
         </div>
-        <div className="text-sm font-bold text-gray-800">{normalized}/100</div>
+        <div className="text-sm font-bold text-gray-800 dark:text-gray-200">{normalized}/100</div>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden mb-3">
+      <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-3 overflow-hidden mb-3">
         <div 
-          className={`h-3 ${color} transition-all duration-500 ease-out`} 
-          style={{ width: `${normalized}%` }} 
+          className={`h-3 ${color} transition-all duration-1000 ease-out`}
+          style={{ width: `${normalized}%` }}
         />
       </div>
 
-      {/* Feedback Section (Replaces Tips) */}
+      {/* Feedback (if exists) */}
       {feedback && (
-        <div className="text-xs text-gray-600 flex items-start gap-2 pt-1">
-          <span className={`text-lg leading-3 ${dotColor}`}>•</span>
-          <span className="leading-tight">{feedback}</span>
+        <div className="flex items-start gap-2 mt-2">
+          <span className={`text-xl leading-none ${dotColor}`}>•</span>
+          <p className="text-xs text-gray-600 dark:text-gray-300 mt-0.5 leading-relaxed">
+            {feedback}
+          </p>
         </div>
       )}
     </div>
   );
-}
+};

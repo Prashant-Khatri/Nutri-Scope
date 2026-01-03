@@ -10,14 +10,14 @@ export const SmartFollowUp = ({ questions, onSelect }: SmartFollowUpProps) => {
     <div className="mt-6 mb-4">
       <div className="flex items-center gap-2 mb-3 px-1">
         <MessageCircleQuestion size={16} className="text-purple-500" />
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Dive Deeper</span>
+        <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dive Deeper</span>
       </div>
       <div className="flex flex-wrap gap-2">
         {questions.map((q, idx) => (
           <button
             key={idx}
             onClick={() => onSelect(q)}
-            className="px-4 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 text-sm rounded-xl transition-colors text-left border border-purple-100"
+            className="px-4 py-2 bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-sm rounded-xl transition-colors text-left border border-purple-100 dark:border-purple-800"
           >
             {q}
           </button>
